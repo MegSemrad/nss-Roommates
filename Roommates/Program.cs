@@ -22,6 +22,27 @@ namespace Roommates
 
                 switch (selection)
                 {
+                    case ("Show all rooms"):
+                        List<Room> rooms = roomRepo.GetAll();
+                        foreach (Room r in rooms)
+                        {
+                            Console.WriteLine($"{r.Name} has an Id of {r.Id} and a max occupancy of {r.MaxOccupancy}");
+                        }
+                        Console.Write("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case ("Search for room"):
+                        Console.Write("Room Id: ");
+                        int id = int.Parse(Console.ReadLine());
+
+                        Room room = roomRepo.GetById(id);
+
+                        Console.WriteLine($"{room.Id} - {room.Name} Max Occupancy({room.MaxOccupancy})");
+                        Console.Write("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
                     case ("Add a room"):
                         Console.Write("Room name: ");
                         string name = Console.ReadLine();
